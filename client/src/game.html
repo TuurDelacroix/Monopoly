@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Monopoly Student</title>
+
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="assets/css/pages/reset.css">
+    <link rel="stylesheet" href="assets/css/pages/game.css">
+    <link rel="stylesheet" href="assets/css/game/game-entities.css">
+    <link rel="stylesheet" href="assets/css/game/player-owned-properties.css">
+
+
+    <script src="assets/js/config.js"></script>
+
+    <script src="assets/js/data-connector/error-handler.js"></script>
+    <script src="assets/js/data-connector/api-communication-abstractor.js"></script>
+    <script src="assets/js/data-connector/local-storage-abstractor.js"></script>
+
+    <script src="assets/js/game/load-game.js"></script>
+    <script src="assets/js/extra/redirect.js"></script>
+    <script src="assets/js/game/game-controls/roll-dice.js"></script>
+
+    <script src="assets/js/game/disable-game.js"></script>
+
+</head>
+<body>
+<header>
+    <div id="game-info">
+        <p>GAME INFO</p>
+        <p id="available-houses"></p>
+        <p id="available-hotels"></p>
+    </div>
+    <div id="bankruptcy">
+        <button hidden>Go bankrupt</button>
+    </div>
+</header>
+<main>
+
+    <div id="gridbox">
+        <div id="current-container">
+            <p></p>
+            <div id="alert">
+                <dialog id="confirm-popup">
+                    <form method="dialog"> <!-- Not valid approved by JVD on 2022-05-20, reference https://github.com/validator/validator/issues/962 -->
+                        <h2 class="title">Popup Title</h2>
+                        <p><span class="popup-text"></span><br><span class="popup-balance-info"></span></p>
+                        <button type="submit" class="accept" id="accept" value="true"></button>
+                        <button type="submit" class="deny" id="deny" value="false"></button>
+                    </form>
+                </dialog>
+                <dialog id="alert-popup">
+                    <form method="dialog"> <!-- Not valid approved by JVD on 2022-05-20, reference https://github.com/validator/validator/issues/962 -->
+                        <h2 class="title">Popup Title</h2>
+                        <p class="popup-text"></p>
+                        <button type="submit" class="accept" value="true"></button>
+                    </form>
+                </dialog>
+            </div>
+            <div>
+                <div id="dice-box">
+                    <p></p>
+                    <div>
+                        <img src="assets/media/dices/6.png" id="dice-1" title="6" alt="6">
+                        <img src="assets/media/dices/6.png" id="dice-2" title="6" alt="6">
+                    </div>
+                    <button hidden>Roll dice!</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="next-positions-container">
+
+            <template id="normal-card">
+                <div class="normal-card">
+                    <h2 class="title"></h2>
+                    <p class="rent">RENT: <span></span></p>
+                    <div class="card-information">
+                        <div class="property">
+                            <img src="assets/media/card-addons/house.png" alt="kot" title="1 kot">
+                            <a class="price-one"></a>
+                        </div>
+
+                        <div class="property">
+                            <img src="assets/media/card-addons/2-house.png" alt="kot" title="2 kot">
+                            <a class="price-two"></a>
+                        </div>
+
+                        <div class="property">
+                            <img src="assets/media/card-addons/3-house.png" alt="kot" title="3 kot">
+                            <a class="price-three"></a>
+                        </div>
+
+                        <div class="property">
+                            <img src="assets/media/card-addons/4-house.png" alt="kot" title="4 kot">
+                            <a class="price-four"></a>
+                        </div>
+
+                        <div class="property">
+                            <img src="assets/media/card-addons/hotel.png" alt="complex" title="1 complex">
+                            <a class="price-complex"></a>
+                        </div>
+                    </div>
+
+                    <div class="card-extra">
+                        <p class="price">House price: <span></span></p>
+                        <p class="mortgage">Mortgage value: <span></span></p>
+                        <p class="card-price"></p>
+                    </div>
+                </div>
+            </template>
+
+            <template id="special-card">
+                <div class="card-panel">
+                    <div class="special-card">
+                        <h2 class="title"></h2>
+                        <div class="card-information">
+                            <div class="icon">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </template>
+
+            <template id="utility-card">
+                <div class="card-panel">
+                    <div class="utility-card">
+                        <h2 class="title"></h2>
+                        <div class="card-information">
+                            <div class="icon">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </template>
+
+            <template id="railroad-card">
+                <div class="card-panel">
+                    <div class="railroad-card">
+                        <h2 class="title"></h2>
+                        <div class="card-information">
+                            <div class="icon">
+                            </div>
+                        </div>
+                        <div class="card-extra">
+                            <p class="mortgage">Mortgage value: <span></span></p>
+                            <p class="card-price"></p>
+                        </div>
+                    </div>
+                </div>
+            </template>
+
+            <template id="tax-income-card">
+                <div class="card-panel">
+                    <div class="tax-income-card">
+                        <h2 class="title"></h2>
+                        <div class="card-information">
+                            <div class="icon">
+                            </div>
+                        </div>
+                        <div class="card-extra">
+                            <p class="tax"></p>
+                            <p class="card-price"></p>
+                        </div>
+                    </div>
+                </div>
+            </template>
+
+            <div class="card-panel" id="tile-spot-0">
+            </div>
+            <div class="card-panel" id="tile-spot-1">
+            </div>
+            <div class="card-panel" id="tile-spot-2">
+            </div>
+            <div class="card-panel" id="tile-spot-3">
+            </div>
+            <div class="card-panel" id="tile-spot-4">
+            </div>
+            <div class="card-panel" id="tile-spot-5">
+            </div>
+            <div class="card-panel" id="tile-spot-6">
+            </div>
+            <div class="card-panel" id="tile-spot-7">
+            </div>
+            <div class="card-panel" id="tile-spot-8">
+            </div>
+            <div class="card-panel" id="tile-spot-9">
+            </div>
+            <div class="card-panel" id="tile-spot-10">
+            </div>
+            <div class="card-panel" id="tile-spot-11">
+            </div>
+            <div class="card-panel" id="tile-spot-12">
+            </div>
+
+
+        </div>
+
+        <div id="players-container">
+
+            <template id="player-info-template">
+                <div class="player-info" id="">
+                    <img src="" alt="">
+                    <div>
+                        <p><span class="player-balance"></span><br><span class="player-location"></span></p>
+                        <div class="player-properties">
+                            <div class="square marksesteenweg not-bought"></div>
+                            <div class="square etienne-sabbelaan not-bought"></div>
+                            <div class="square martelarenlaan not-bought"></div>
+                            <div class="square demerstraat not-bought"></div>
+                            <div class="square grote-markt not-bought"></div>
+                            <div class="square rijsselstraat not-bought"></div>
+                            <div class="square t-zand not-bought"></div>
+                            <div class="square eiermarkt not-bought"></div>
+                            <div class="square sint-pietersplein not-bought"></div>
+                            <div class="square korenmarkt not-bought"></div>
+                            <div class="square overpoortstraat not-bought"></div>
+                            <div class="square rue-saint-gilles not-bought"></div>
+                            <div class="square rue-des-celestines not-bought"></div>
+                            <div class="square boulevard-davroy not-bought"></div>
+                            <div class="square vrijwilligerslaan not-bought"></div>
+                            <div class="square kroonlaan not-bought"></div>
+                            <div class="square grotere-markt not-bought"></div>
+                            <div class="square grote-pieter-potstraat not-bought"></div>
+                            <div class="square groenplaats not-bought"></div>
+                            <div class="square meir not-bought"></div>
+                            <div class="square naamsestraat not-bought"></div>
+                            <div class="square oude-markt not-bought"></div>
+                            <div class="square station-gent-sint-pieters not-bought"></div>
+                            <div class="square station-antwerp-central not-bought"></div>
+                            <div class="square station-brussels not-bought"></div>
+                            <div class="square station-leuven not-bought"></div>
+                            <div class="square electric-company not-bought"></div>
+                            <div class="square water-works not-bought"></div>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </div>
+
+    </div>
+</main>
+
+</body>
+</html>

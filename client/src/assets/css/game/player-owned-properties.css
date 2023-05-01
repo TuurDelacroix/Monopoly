@@ -1,0 +1,170 @@
+.player-properties {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-areas:
+            ".             .           .                   .           .               .              .              .                                                                 station-gent-sint-pieters        ."
+            ".                   martelarenlaan  rijsselstraat          sint-pietersplein       rue-saint-gilles      vrijwilligerslaan     grote-pieter-potstraat   .                 station-antwerp-central ."
+            "marksesteenweg      demerstraat     t-zand                 korenmarkt              rue-des-celestines    kroonlaan             groenplaats             naamsestraat       station-brussels         water-works"
+            "etienne-sabbelaan   grote-markt     eiermarkt              overpoortstraat         boulevard-davroy      grotere-markt          meir                    oude-markt          station-leuven           electric-company";
+
+    height: 4rem;
+    width: 10rem;
+    gap: 0.2rem;
+
+    grid-auto-rows: 1fr;
+    grid-auto-columns: 1fr;
+    padding: 0.6rem;
+
+}
+
+.square {
+    border: 0.1rem solid black;
+}
+
+.not-bought {
+    opacity: 0.15;
+}
+
+.info-container .mortgaged {
+    opacity: 0.4;
+}
+
+.marksesteenweg {
+    grid-area: marksesteenweg;
+    background-color: saddlebrown
+}
+
+.etienne-sabbelaan {
+    grid-area: etienne-sabbelaan;
+    background-color: saddlebrown
+}
+
+.martelarenlaan {
+    grid-area: martelarenlaan;
+    background-color: lightblue;
+}
+
+.demerstraat {
+    grid-area: demerstraat;
+    background-color: lightblue;
+}
+
+.grote-markt {
+    grid-area: grote-markt;
+    background-color: lightblue;
+}
+
+.rijsselstraat {
+    grid-area: rijsselstraat;
+    background-color: purple;
+}
+
+.t-zand {
+    grid-area: t-zand;
+    background-color: purple;
+}
+
+.eiermarkt {
+    grid-area: eiermarkt;
+    background-color: purple;
+}
+
+.sint-pietersplein {
+    grid-area: sint-pietersplein;
+    background-color: orange;
+}
+
+.korenmarkt {
+    grid-area: korenmarkt;
+    background-color: orange;
+}
+
+.overpoortstraat {
+    grid-area: overpoortstraat;
+    background-color: orange;
+}
+
+.rue-saint-gilles {
+    grid-area: rue-saint-gilles;
+    background-color: red;
+}
+
+.rue-des-celestines {
+    grid-area: rue-des-celestines;
+    background-color: red;
+}
+
+.boulevard-davroy {
+    grid-area: boulevard-davroy;
+    background-color: red;
+}
+
+.vrijwilligerslaan {
+    grid-area: vrijwilligerslaan;
+    background-color: yellow;
+}
+
+.kroonlaan {
+    grid-area: kroonlaan;
+    background-color: yellow;
+}
+
+.grotere-markt {
+    grid-area: grotere-markt;
+    background-color: yellow;
+}
+
+.grote-pieter-potstraat {
+    grid-area: grote-pieter-potstraat;
+    background-color: green;
+}
+
+.groenplaats {
+    grid-area: groenplaats;
+    background-color: green;
+}
+
+.meir {
+    grid-area: meir;
+    background-color: green;
+}
+
+.naamsestraat {
+    grid-area: naamsestraat;
+    background-color: darkblue;
+}
+
+.oude-markt {
+    grid-area: oude-markt;
+    background-color: darkblue;
+}
+
+#players-container .station-gent-sint-pieters{
+    grid-area: station-gent-sint-pieters;
+    background-color: black;
+}
+
+.station-antwerp-central {
+    grid-area: station-antwerp-central;
+    background-color: black;
+}
+
+.station-brussels {
+    grid-area: station-brussels;
+    background-color: black;
+}
+
+.station-leuven {
+    grid-area: station-leuven;
+    background-color: black;
+}
+
+.electric-company {
+    grid-area: electric-company;
+    background-color: white;
+}
+
+.water-works {
+    grid-area: water-works;
+    background-color: white;
+}

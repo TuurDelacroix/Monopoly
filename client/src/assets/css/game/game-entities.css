@@ -1,0 +1,134 @@
+
+/* all css relating cards */
+
+hr {
+    border: 0;
+    height: 0.06rem;
+}
+
+/* MULTIPLE CARD TYPES ARE SPLIT HERE */
+
+.card-panel {
+    margin: 0 1rem;
+}
+
+.normal-card, .special-card, .utility-card, .railroad-card, .tax-income-card {
+    max-width: 20rem;
+    width: 15rem;
+    height: 20rem;
+    margin: 3.75rem auto;
+    padding: 0.625rem;
+    clear:both; /* no floating elements */
+    text-align:center;
+    display: flex;
+    flex-direction: column;
+
+    background-color: rgba(255,255,255 ,0.50);
+    box-shadow: 0 0 1rem rgba(200,200,200 ,1);
+    border-radius: 0.5rem;
+}
+
+h2 {
+    text-align: center;
+    color: black;
+    padding: 1.25rem;
+    margin: 0;
+    border: 0.125rem solid black;
+}
+.special-card h2, .tax-income-card h2, .electric-company h2, .water-works h2 {
+    text-align: center;
+    padding: 1.25rem;
+    border: none;
+}
+
+.tax-income {
+    background-image: url("../../media/card-addons/kot-party.png");
+    background-position: center;
+    background-size: 120%;
+}
+.luxury-tax {
+    background-image: url("../../media/card-addons/tournee-general.png");
+    background-position: center;
+    background-size: 120%;
+}
+/*  EXTRA CARD INFORMATION ON TAX INCOME CARD */
+.card-extra {
+    text-transform:uppercase;
+    font-size:0.75rem;
+    letter-spacing:0.125rem
+}
+
+.tax-income-card>.card-extra {
+    margin: 60% auto auto auto;
+}
+/* WHAT'S ON THE CARD */
+
+/* NORMAL CARD */
+.property {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.card-information {  /* FIX FOR THE #CURRENT-POSITION STYLING */
+    display: flex;
+    flex-direction: column;
+}
+
+.card-information img {
+    height: 2rem;
+}
+
+.card-price {
+    font-size: 1.2rem;
+}
+
+/*  SPECIAL CARD */
+.card-information .icon img {
+    height: 13rem;
+    margin: auto;
+}
+
+/* CARD COLORS */
+
+.BROWN {
+    background: rgba(150, 115, 90, 0.61);
+}
+
+.BLACK {
+    background: rgba(16, 15, 15, 0.6);
+}
+
+.LIGHTBLUE {
+    background: #abcbdc;
+}
+
+.VIOLET {
+    background: rgba(238, 130, 238, 0.9);
+}
+
+.ORANGE {
+    background: rgba(255, 165, 0, 0.5);
+}
+
+.RED {
+    background: rgba(255, 0, 0, 0.5);
+}
+
+.YELLOW {
+    background: rgba(255, 255, 0, 0.35);
+    color: black;
+}
+
+.DARKGREEN {
+    background: rgba(0, 100, 0, 0.5);
+}
+
+.DARKBLUE {
+    background: rgba(0, 0, 139, 0.6);
+}
+
+.jail {
+    background: rgb(240, 124, 28);
+}

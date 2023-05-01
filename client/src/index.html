@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Monopoly Student</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="assets/css/pages/reset.css">
+    <link rel="stylesheet" href="assets/css/pages/home.css">
+
+    <script src="assets/js/config.js"></script>
+
+    <script src="assets/js/data-connector/error-handler.js"></script>
+    <script src="assets/js/data-connector/api-communication-abstractor.js"></script>
+    <script src="assets/js/data-connector/local-storage-abstractor.js"></script>
+
+
+    <script src="assets/js/game/renderer.js"></script>
+    <script src="assets/js/game/create-game.js"></script>
+    <script src="assets/js/game/join-game.js"></script>
+    <script src="assets/js/initialiser.js"></script>
+    <script src="assets/js/extra/redirect.js"></script>
+
+    <script src="assets/js/error-handling/catch-error.js"></script>
+    <script src="assets/js/error-handling/error-renderer.js"></script>
+
+
+</head>
+<body>
+<header>
+    <div class="errormessages" hidden>
+        <p></p>
+    </div>
+    <img src="assets/media/logo.png" alt="Monopoly Logo" title="Monopoly Logo">
+</header>
+<main>
+    <div id="container">
+        <section id="game-settings-container">
+            <h3>GAME SETTINGS</h3>
+            <label for="username">Username</label>
+            <input type="text" placeholder="choose your username" id="username" name="username" maxlength="10">
+        </section>
+
+        <section id="join-lobby-container">
+            <form>
+                <h3>JOIN GAME</h3>
+
+                <div id="lobby-overview">
+                    <template>
+                        <div class="available-lobby">
+                            <p class="lobby-info" title=""></p>
+                            <p class="lobby-player-info"></p>
+                            <input type="submit" class="join-game-button" name="join-game-button" value="JOIN">
+                        </div>
+                    </template>
+                </div>
+
+
+            </form>
+        </section>
+        <section id="create-game-container">
+            <form>
+
+                <h3>CREATE GAME</h3>
+                <div>
+                    <label for="lobby-name">Lobby Name</label>
+                    <input type="text" name="lobby-name" id="lobby-name" required maxlength="15">
+                </div>
+                <div>
+                    <label for="amount-of-players">Amount of players</label>
+                    <input type="number" name="amount-of-players" id="amount-of-players"
+                           min="2"
+                           max="10"
+                           placeholder="enter a number"
+                           required>
+                </div>
+
+                <input type="submit" id="create-game" value="CREATE GAME">
+            </form>
+        </section>
+    </div>
+
+</main>
+
+</body>
+</html>

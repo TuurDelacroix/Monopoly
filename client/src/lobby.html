@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Monopoly Student</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="application-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="assets/css/pages/reset.css">
+    <link rel="stylesheet" href="assets/css/pages/screen.css">
+    <link rel="stylesheet" href="assets/css/pages/lobby.css">
+
+    <script src="assets/js/config.js"></script>
+
+    <script src="assets/js/data-connector/error-handler.js"></script>
+    <script src="assets/js/data-connector/api-communication-abstractor.js"></script>
+    <script src="assets/js/data-connector/local-storage-abstractor.js"></script>
+
+    <script src="assets/js/game-configuration/lobby.js"></script>
+
+    <script src="assets/js/error-handling/catch-error.js"></script>
+    <script src="assets/js/error-handling/error-renderer.js"></script>
+    <script src="assets/js/extra/redirect.js"></script>
+
+</head>
+<body>
+<header>
+    <h2>Lobby</h2>
+    <h3>game id: <span id="gameid"></span></h3>
+</header>
+<main>
+    <p>PLAYERS</p>
+    <div class="amountOfPlayers"></div>
+    <div class="players">
+        <template>
+            <section class="player">
+                <div>
+                    <h2 class="playername">Player</h2>
+                    <h3 hidden>(you)</h3>
+                </div>
+            </section>
+        </template>
+    </div>
+</main>
+</body>
+</html>
